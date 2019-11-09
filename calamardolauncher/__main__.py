@@ -22,7 +22,6 @@ CALAMARDO_LAUNCHER_CREDENTIAL_PATH = CALAMARDO_LAUNCHER_PATH + "/google-credenti
 CALAMARDO_LAUNCHER_TOKEN_PATH = CALAMARDO_LAUNCHER_PATH + "/token.pickle"
 CALAMARDO_LAUNCHER_EXTRACT_PATH = CALAMARDO_LAUNCHER_PATH + "/calamardo_jar"
 CALAMARDO_JAR_PATH = HOME_PATH + "/.m2/repository/com/bbva/cib/core/common/calamardo-app/0.1.6/calamardo-app-0.1.6-jar-with-dependencies.jar"
-CALAMARDO_JAR_PATH = HOME_PATH + "/Desktop/calamardo/calamardo-app/target/calamardo-app-0.1.6-SNAPSHOT-jar-with-dependencies.jar"
 
 
 def get_calamardo_google_credentials():
