@@ -20,6 +20,7 @@ HOME_PATH = os.getenv("HOME")
 CALAMARDO_LAUNCHER_PATH = HOME_PATH + "/.calamardo"
 CALAMARDO_LAUNCHER_CREDENTIAL_PATH = CALAMARDO_LAUNCHER_PATH + "/google-credential.json"
 CALAMARDO_LAUNCHER_TOKEN_PATH = CALAMARDO_LAUNCHER_PATH + "/token.pickle"
+CALAMARDO_LAUNCHER_TOKENS_PATH = CALAMARDO_LAUNCHER_PATH + "/tokens"
 CALAMARDO_LAUNCHER_EXTRACT_PATH = CALAMARDO_LAUNCHER_PATH + "/calamardo_jar"
 CALAMARDO_JAR_PATH = HOME_PATH + "/.m2/repository/com/bbva/cib/core/common/calamardo-app/0.1.6/calamardo-app-0.1.6-jar-with-dependencies.jar"
 
@@ -32,6 +33,9 @@ def get_calamardo_google_credentials():
             z.extractall(CALAMARDO_LAUNCHER_EXTRACT_PATH)
         shutil.copy(CALAMARDO_LAUNCHER_EXTRACT_PATH + "/tokens/google-credential.json", CALAMARDO_LAUNCHER_PATH)
         shutil.rmtree(CALAMARDO_LAUNCHER_EXTRACT_PATH)
+
+    if pathlib.Path(CALAMARDO_LAUNCHER_TOKENS_PATH).exists():
+        shutil.copytree(CALAMARDO_LAUNCHER_TOKENS_PATH, "./tokens")
 
 
 def ask_for_credentials(scopes):
@@ -86,6 +90,8 @@ def generate_data(chain, enviroment, outputs):
         os.system(cmd)
 
         send_log()
+    if not pathlib.Path(CALAMARDO_LAUNCHER_TOKENS_PATH).exists():
+        shutil.copytree("tokens", CALAMARDO_LAUNCHER_TOKENS_PATH)
 
 
 def send_log():
